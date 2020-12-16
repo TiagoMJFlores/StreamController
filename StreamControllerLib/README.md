@@ -1,5 +1,7 @@
 # StreamControllerLib
 
+***NOT READY FOR PRODUCTION ***
+
 [![CI Status](https://img.shields.io/travis/tiagoflores2@outlook.com/StreamControllerLib.svg?style=flat)](https://travis-ci.org/tiagoflores2@outlook.com/StreamControllerLib)
 [![Version](https://img.shields.io/cocoapods/v/StreamControllerLib.svg?style=flat)](https://cocoapods.org/pods/StreamControllerLib)
 [![License](https://img.shields.io/cocoapods/l/StreamControllerLib.svg?style=flat)](https://cocoapods.org/pods/StreamControllerLib)
