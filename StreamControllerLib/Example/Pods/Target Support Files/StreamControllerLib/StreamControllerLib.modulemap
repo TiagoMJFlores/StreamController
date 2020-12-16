@@ -1,0 +1,6 @@
+framework module StreamControllerLib {
+  umbrella header "StreamControllerLib-umbrella.h"
+
+  export *
+  module * { export * }
+}

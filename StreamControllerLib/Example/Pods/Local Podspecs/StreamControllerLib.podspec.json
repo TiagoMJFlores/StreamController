@@ -1,0 +1,22 @@
+{
+  "name": "StreamControllerLib",
+  "version": "0.1.0",
+  "summary": "A short description of StreamControllerLib.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/tiagoflores2@outlook.com/StreamControllerLib",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "tiagoflores2@outlook.com": "tiagoflores2@outlook.com"
+  },
+  "source": {
+    "git": "https://github.com/tiagoflores2@outlook.com/StreamControllerLib.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "StreamControllerLib/Classes/**/*"
+}
