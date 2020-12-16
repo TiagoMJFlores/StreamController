@@ -17,7 +17,9 @@ final public class EventSink<D> {
     }
     
     public func add(event: D) {
-        stream.receivedCallback?(event)
+        stream.listernerList.forEach { listener in
+            listener?(event)
+        }
     }
     
     public func addError(object: AnyObject) {

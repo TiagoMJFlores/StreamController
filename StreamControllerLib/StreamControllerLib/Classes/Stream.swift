@@ -10,11 +10,27 @@ import Foundation
 
 final public class Stream<T> {
     
-    required public init() {}
+    private let type: StreamType
     
-    var receivedCallback: ((T) -> Void)?
+    required init(type: StreamType = .singleListener) {
+        self.type = type
+    }
     
-    public func listen(received: @escaping (T) -> Void) {
-        self.receivedCallback = received
+    typealias CallbackType = ((T) -> Void)?
+    var listernerList: [CallbackType] = []
+    
+    public func listen(received callback: @escaping (T) -> Void) {
+        
+        switch type {
+        
+        case .singleListener:
+            listernerList = [callback]
+            break
+        case .multipleListener:
+            listernerList.append(callback)
+            break
+            
+        }
+   
     }
 }

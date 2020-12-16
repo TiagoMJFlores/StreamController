@@ -11,18 +11,20 @@ import StreamControllerLib
 
 class ViewController: UIViewController {
 
-    var object = StreamController<Int>()
+    var object = StreamController<Int>.broadcast()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         object.stream.listen { value in
-            print("\(value)")
+            print("1: \(value)")
         }
         
+        object.stream.listen { value in
+            print("2: \(value)")
+        }
+    
         object.sink.add(event: 2)
-        //object.printTest()
         
-
     }
 
     override func didReceiveMemoryWarning() {
