@@ -11,8 +11,8 @@ import StreamControllerLib
 
 class ViewController: UIViewController {
 
-    var object = StreamController<Int>.broadcast()
-    
+    var object = StreamController<Int>(streamListenType: .multipleListener)
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         print("init test")

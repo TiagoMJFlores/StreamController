@@ -10,10 +10,10 @@ import Foundation
 
 final public class Stream<T> {
     
-    private let streamListenState: StreamListenState
+    private let streamListenType: StreamListenType
     
-    required init(streamListenState: StreamListenState = .singleListener) {
-        self.streamListenState = streamListenState
+    required init(streamListenState: StreamListenType = .singleListener) {
+        self.streamListenType = streamListenState
     }
     
     typealias ListenCallbackType = ((T) -> Void)?
@@ -25,7 +25,7 @@ final public class Stream<T> {
     @discardableResult
     public func listen(received callback: @escaping (T) -> Void) -> Self {
         
-        switch streamListenState {
+        switch streamListenType {
         case .singleListener:
             listernerCallList = [callback]
             break
@@ -40,7 +40,7 @@ final public class Stream<T> {
     @discardableResult
     public func catchError(received callback: @escaping (Any) -> Void) -> Self {
         
-        switch streamListenState {
+        switch streamListenType {
         case .singleListener:
             catchErrorCallList = [callback]
             break
