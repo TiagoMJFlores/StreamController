@@ -18,7 +18,7 @@ final public class EventSink<D> {
         self.isClosed = false
     }
     
-    public func add(event: D) {
+    public func add(_ event: D) {
         
         guard !isClosed else { return }
         stream.listernerCallList.forEach { listener in
@@ -26,11 +26,11 @@ final public class EventSink<D> {
         }
     }
     
-    public func addError(object: Any) {
+    public func addError(_ error: Any) {
         
         guard !isClosed else { return }
         stream.catchErrorCallList.forEach { listener in
-            listener?(object)
+            listener?(error)
         }
     }
     

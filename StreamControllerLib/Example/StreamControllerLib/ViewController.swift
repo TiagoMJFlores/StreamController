@@ -27,10 +27,8 @@ class ViewController: UIViewController {
             print("throw error: \(value)")
         }
     
-        
-        object.sink.add(event: 2)
-        object.sink.addError(object: "send error")
-        
+        object.sink.add(2)
+        object.sink.addError("send error")
         
         object.sink.close()
         object.stream.listen { value in
