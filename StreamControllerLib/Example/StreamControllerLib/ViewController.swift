@@ -11,28 +11,42 @@ import StreamControllerLib
 
 class ViewController: UIViewController {
 
-    var object = StreamController<Int>(streamListenType: .multipleListener)
+    var streamController = StreamController<Int>(streamListenType: .multipleListener)
+    
+    var persistentStreamController = PersistentStreamController<String>()
    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("init test")
         
-        object.stream.listen { value in
+        streamController.stream.listen { value in
             print("received 1: \(value)")
         }
         
-        object.stream.listen { value in
+        streamController.stream.listen { value in
             print("received 2: \(value)")
         }.catchError { value in
             print("throw error: \(value)")
         }
     
-        object.sink.add(2)
-        object.sink.addError("send error")
+        streamController.sink.add(2)
+        streamController.sink.addError("send error")
         
-        object.sink.close()
-        object.stream.listen { value in
+        streamController.sink.close()
+        streamController.stream.listen { value in
             print("this should fail: \(value)")
+        }
+                
+
+        persistentStreamController.sink.add("PersistentStream first value sent")
+        persistentStreamController.sink.add("PersistentStream last value sent")
+        
+        persistentStreamController.stream.listen { value in
+            print("I am too late for listen values already sent")
+        }
+       
+        if let storedValue = persistentStreamController.value {
+            print(storedValue)
         }
         
     }

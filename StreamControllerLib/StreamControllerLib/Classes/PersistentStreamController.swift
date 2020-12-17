@@ -9,12 +9,13 @@ import Foundation
 
 final public class PersistentStreamController<T>: StreamController<T> {
     
-    private (set) var value: T?
+    public private (set) var value: T? = nil
     
-    override init(stream: Stream<T>) {
-        super.init(stream: stream)
+    public init() {
+        super.init(streamListenType: .multipleListener)
+        stream.listen { [weak self] receivedValue in
+            self?.value = receivedValue
+        }
     }
-    
-
     
 }
