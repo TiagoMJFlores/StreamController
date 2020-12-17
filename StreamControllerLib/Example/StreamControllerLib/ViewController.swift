@@ -15,15 +15,20 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         object.stream.listen { value in
-            print("1: \(value)")
+            print("received 1: \(value)")
         }
         
         object.stream.listen { value in
-            print("2: \(value)")
+            print("received 2: \(value)")
+        }.catchError { value in
+            print("throw error: \(value)")
         }
     
+        
         object.sink.add(event: 2)
+        object.sink.addError(object: "send error")
         
     }
 

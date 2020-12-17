@@ -17,13 +17,15 @@ final public class EventSink<D> {
     }
     
     public func add(event: D) {
-        stream.listernerList.forEach { listener in
+        stream.listernerCallList.forEach { listener in
             listener?(event)
         }
     }
     
-    public func addError(object: AnyObject) {
-        
+    public func addError(object: Any) {
+        stream.catchErrorCallList.forEach { listener in
+            listener?(object)
+        }
     }
     
     public func close() {

@@ -16,21 +16,37 @@ final public class Stream<T> {
         self.type = type
     }
     
-    typealias CallbackType = ((T) -> Void)?
-    var listernerList: [CallbackType] = []
+    typealias ListenCallbackType = ((T) -> Void)?
+    typealias CatchErrorCallbackType = ((Any) -> Void)?
     
-    public func listen(received callback: @escaping (T) -> Void) {
+    var listernerCallList: [ListenCallbackType] = []
+    var catchErrorCallList: [CatchErrorCallbackType] = []
+    
+    @discardableResult
+    public func listen(received callback: @escaping (T) -> Void) -> Self {
         
         switch type {
-        
         case .singleListener:
-            listernerList = [callback]
+            listernerCallList = [callback]
             break
         case .multipleListener:
-            listernerList.append(callback)
+            listernerCallList.append(callback)
             break
-            
         }
-   
+        return self
+    }
+    
+    @discardableResult
+    public func catchError(received callback: @escaping (Any) -> Void) -> Self {
+        
+        switch type {
+        case .singleListener:
+            catchErrorCallList = [callback]
+            break
+        case .multipleListener:
+            catchErrorCallList.append(callback)
+            break
+        }
+        return self
     }
 }
