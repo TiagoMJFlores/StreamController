@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("init test")
         
         object.stream.listen { value in
             print("received 1: \(value)")
@@ -29,6 +30,12 @@ class ViewController: UIViewController {
         
         object.sink.add(event: 2)
         object.sink.addError(object: "send error")
+        
+        
+        object.sink.close()
+        object.stream.listen { value in
+            print("this should fail: \(value)")
+        }
         
     }
 

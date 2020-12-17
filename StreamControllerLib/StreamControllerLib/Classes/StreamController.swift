@@ -16,7 +16,7 @@ public class StreamController<T> {
     }
     
     public static func broadcast() -> StreamController<T> {
-        let stream = Stream<T>(type: .multipleListener)
+        let stream = Stream<T>(streamListenState: .multipleListener)
         let streamController = StreamController<T>(stream: stream)
         return streamController
     }

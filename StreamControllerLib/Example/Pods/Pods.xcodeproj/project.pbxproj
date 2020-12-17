@@ -72,7 +72,7 @@
 		8E4A2F4A1EF16B63817A516CC2743619 /* Quick-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 71519851BE602952F6A8B7F1BD49C47E /* Quick-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		90D7535D258ABFAA009127F3 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D7535B258ABFA9009127F3 /* Stream.swift */; };
 		90D7535E258ABFAA009127F3 /* EventSink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D7535C258ABFA9009127F3 /* EventSink.swift */; };
-		90D7537F258AC4C5009127F3 /* StreamType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D7537E258AC4C5009127F3 /* StreamType.swift */; };
+		90D7537F258AC4C5009127F3 /* StreamListenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D7537E258AC4C5009127F3 /* StreamListenState.swift */; };
 		9231B70907F130F31CF5717C502B780C /* ExampleGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9FF41D5900AD165160731F2C227F18 /* ExampleGroup.swift */; };
 		94B18F2CFF543F6B2E43E84630C337E2 /* SuiteHooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4C13D3E16F5CC104B4F9E6E0509CE1 /* SuiteHooks.swift */; };
 		94DA3131D64B3D904BE28E72F1871065 /* BeAKindOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7E3F49F23D9F10AE6C0599B84EFA0BB /* BeAKindOf.swift */; settings = {COMPILER_FLAGS = "-DPRODUCT_NAME=Nimble/Nimble"; }; };
@@ -248,7 +248,7 @@
 		8D98EC2B9A6E8D71516EEE113E30C815 /* QuickTestObservation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuickTestObservation.swift; path = Sources/Quick/QuickTestObservation.swift; sourceTree = "<group>"; };
 		90D7535B258ABFA9009127F3 /* Stream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stream.swift; path = StreamControllerLib/Classes/Stream.swift; sourceTree = "<group>"; };
 		90D7535C258ABFA9009127F3 /* EventSink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventSink.swift; path = StreamControllerLib/Classes/EventSink.swift; sourceTree = "<group>"; };
-		90D7537E258AC4C5009127F3 /* StreamType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StreamType.swift; path = StreamControllerLib/Classes/StreamType.swift; sourceTree = "<group>"; };
+		90D7537E258AC4C5009127F3 /* StreamListenState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StreamListenState.swift; path = StreamControllerLib/Classes/StreamListenState.swift; sourceTree = "<group>"; };
 		93B6D43CE5AA9C07E71CE985B2DD3556 /* RaisesException.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RaisesException.swift; path = Sources/Nimble/Matchers/RaisesException.swift; sourceTree = "<group>"; };
 		944BCB5D21E910CF01815DFA63020F8C /* CwlPreconditionTesting.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CwlPreconditionTesting.h; path = Carthage/Checkouts/CwlPreconditionTesting/Sources/CwlPreconditionTesting/include/CwlPreconditionTesting.h; sourceTree = "<group>"; };
 		954F6BC7A562658C4FAC057034F6DF28 /* mach_excServer.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = mach_excServer.c; path = Carthage/Checkouts/CwlPreconditionTesting/Sources/CwlMachBadInstructionHandler/mach_excServer.c; sourceTree = "<group>"; };
@@ -449,7 +449,7 @@
 		5ACAEF63677E18EB70805CC06909AADC /* StreamControllerLib */ = {
 			isa = PBXGroup;
 			children = (
-				90D7537E258AC4C5009127F3 /* StreamType.swift */,
+				90D7537E258AC4C5009127F3 /* StreamListenState.swift */,
 				90D7535C258ABFA9009127F3 /* EventSink.swift */,
 				90D7535B258ABFA9009127F3 /* Stream.swift */,
 				5503A6EEB512DE1D5E795573AD780738 /* StreamController.swift */,
@@ -882,7 +882,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E54CC1440C811107307E0EF31BD710A /* StreamController.swift in Sources */,
-				90D7537F258AC4C5009127F3 /* StreamType.swift in Sources */,
+				90D7537F258AC4C5009127F3 /* StreamListenState.swift in Sources */,
 				90D7535E258ABFAA009127F3 /* EventSink.swift in Sources */,
 				90D7535D258ABFAA009127F3 /* Stream.swift in Sources */,
 				EBDAD349B830CFD5F76C7F2449D5E6A1 /* StreamControllerLib-dummy.m in Sources */,
