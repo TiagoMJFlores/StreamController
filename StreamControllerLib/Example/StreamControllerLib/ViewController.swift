@@ -39,7 +39,7 @@ class ViewController: UIViewController {
                 
 
         persistentStreamController.sink.add("PersistentStream first value sent")
-        persistentStreamController.sink.add("PersistentStream last value sent")
+        persistentStreamController.sink.add("PersistentStream last value sent. Always stored and waiting to be used")
         
         persistentStreamController.stream.listen { value in
             print("I am too late for listen values already sent")
