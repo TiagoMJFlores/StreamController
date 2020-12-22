@@ -27,11 +27,6 @@ final public class EventSink<D> {
         }
         
         stream.eventReceivedTransformHelper?(event)
-        /*
-        if let streamTransfomer =  stream.streamTransformer {
-            streamTransfomer.handlers(event, streamTransfomer.streamController.sink)
-        }*/
-     
     }
     
     public func addError(_ error: Any) {
