@@ -12,13 +12,15 @@ import StreamControllerLib
 class ViewController: UIViewController {
 
     var streamControllerNumber = StreamController<Int>(streamListenType: .multipleListener)
+    var streamControllerNumberTwo = StreamController<Int>(streamListenType: .multipleListener)
     var streamControllerPassword = StreamController<String>(streamListenType: .multipleListener)
+    let combineLatest = CombineLatestStream<Int>()
 
     var persistentStreamController = PersistentStreamController<String>()
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("init test")
+      
         
         /*
         streamControllerNumber.stream.listen { value in
@@ -38,20 +40,37 @@ class ViewController: UIViewController {
         streamControllerNumber.stream.listen { value in
             print("this should fail: \(value)")
         }
-                
-
-        persistentStreamController.sink.add("PersistentStream first value sent")
-        persistentStreamController.sink.add("PersistentStream last value sent. Always stored and waiting to be used")
-        
-        persistentStreamController.stream.listen { value in
-            print("I am too late for listen values already sent")
-        }
-       
-        if let storedValue = persistentStreamController.value {
-            print(storedValue)
-        }
         */
+
+        combineLatest.combine2(streamA: streamControllerNumber.stream, streamB: streamControllerNumberTwo.stream) { (valueA, valueB) -> Int in
+            return valueA + valueB
+        }.listen(received: { result in
+            print("combineLatest stream \(result)")
+        })
         
+        
+        streamControllerNumber.sink.add(1)
+        streamControllerNumberTwo.sink.add(2)
+        streamControllerNumber.sink.add(1)
+        streamControllerNumberTwo.sink.add(2)
+        //transformerTest()
+    }
+    
+    
+    func persistentStreamTest() {
+         persistentStreamController.sink.add("PersistentStream first value sent")
+         persistentStreamController.sink.add("PersistentStream last value sent. Always stored and waiting to be used")
+         
+         persistentStreamController.stream.listen { value in
+             print("I am too late for listen values already sent")
+         }
+        
+         if let storedValue = persistentStreamController.value {
+             print(storedValue)
+         }
+    }
+    
+    func transformerTest() {
         let streamTransfomer = StreamTransformer<String, Any>.fromHandlers(
             handlers: { (data: String, sink: EventSink<Any>) in
                 
@@ -63,7 +82,7 @@ class ViewController: UIViewController {
                
             })
         
-        let  validatePasswordStream = streamControllerPassword.stream.transform(streamTransformer: streamTransfomer).listen { value in
+        streamControllerPassword.stream.transform(streamTransformer: streamTransfomer).listen { value in
             print("transform stream: \(value)")
         }.catchError { value in
             print("transform error: \(value)")
@@ -75,7 +94,6 @@ class ViewController: UIViewController {
         
         streamControllerPassword.sink.add("d")
         streamControllerPassword.sink.add("valid pasword")
-        
     }
 
     override func didReceiveMemoryWarning() {

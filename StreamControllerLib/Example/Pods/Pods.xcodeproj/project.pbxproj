@@ -72,6 +72,7 @@
 		8E4A2F4A1EF16B63817A516CC2743619 /* Quick-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 71519851BE602952F6A8B7F1BD49C47E /* Quick-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		90A1289F258B6562005340BD /* PersistentStreamController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A1289E258B6562005340BD /* PersistentStreamController.swift */; };
 		90C10F3A2591F5C70077097E /* StreamTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C10F392591F5C70077097E /* StreamTransformer.swift */; };
+		90C10F5E25924A880077097E /* CombineLatestStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C10F5D25924A880077097E /* CombineLatestStream.swift */; };
 		90D7535D258ABFAA009127F3 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D7535B258ABFA9009127F3 /* Stream.swift */; };
 		90D7535E258ABFAA009127F3 /* EventSink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D7535C258ABFA9009127F3 /* EventSink.swift */; };
 		90D7537F258AC4C5009127F3 /* StreamListenType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D7537E258AC4C5009127F3 /* StreamListenType.swift */; };
@@ -250,6 +251,7 @@
 		8D98EC2B9A6E8D71516EEE113E30C815 /* QuickTestObservation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = QuickTestObservation.swift; path = Sources/Quick/QuickTestObservation.swift; sourceTree = "<group>"; };
 		90A1289E258B6562005340BD /* PersistentStreamController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersistentStreamController.swift; path = StreamControllerLib/Classes/PersistentStreamController.swift; sourceTree = "<group>"; };
 		90C10F392591F5C70077097E /* StreamTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StreamTransformer.swift; path = StreamControllerLib/Classes/StreamTransformer.swift; sourceTree = "<group>"; };
+		90C10F5D25924A880077097E /* CombineLatestStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineLatestStream.swift; sourceTree = "<group>"; };
 		90D7535B258ABFA9009127F3 /* Stream.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stream.swift; path = StreamControllerLib/Classes/Stream.swift; sourceTree = "<group>"; };
 		90D7535C258ABFA9009127F3 /* EventSink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventSink.swift; path = StreamControllerLib/Classes/EventSink.swift; sourceTree = "<group>"; };
 		90D7537E258AC4C5009127F3 /* StreamListenType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StreamListenType.swift; path = StreamControllerLib/Classes/StreamListenType.swift; sourceTree = "<group>"; };
@@ -453,6 +455,7 @@
 		5ACAEF63677E18EB70805CC06909AADC /* StreamControllerLib */ = {
 			isa = PBXGroup;
 			children = (
+				90C10F5D25924A880077097E /* CombineLatestStream.swift */,
 				90C10F392591F5C70077097E /* StreamTransformer.swift */,
 				90A1289E258B6562005340BD /* PersistentStreamController.swift */,
 				90D7537E258AC4C5009127F3 /* StreamListenType.swift */,
@@ -889,6 +892,7 @@
 			files = (
 				6E54CC1440C811107307E0EF31BD710A /* StreamController.swift in Sources */,
 				90C10F3A2591F5C70077097E /* StreamTransformer.swift in Sources */,
+				90C10F5E25924A880077097E /* CombineLatestStream.swift in Sources */,
 				90D7537F258AC4C5009127F3 /* StreamListenType.swift in Sources */,
 				90A1289F258B6562005340BD /* PersistentStreamController.swift in Sources */,
 				90D7535E258ABFAA009127F3 /* EventSink.swift in Sources */,
