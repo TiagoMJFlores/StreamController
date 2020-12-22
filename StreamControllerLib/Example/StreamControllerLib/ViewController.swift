@@ -48,12 +48,12 @@ class ViewController: UIViewController {
             print("combineLatest stream \(result)")
         })
         
-        
+        /*
         streamControllerNumber.sink.add(1)
         streamControllerNumberTwo.sink.add(2)
         streamControllerNumber.sink.add(1)
-        streamControllerNumberTwo.sink.add(2)
-        //transformerTest()
+        streamControllerNumberTwo.sink.add(2)*/
+        transformerTest()
     }
     
     
@@ -71,8 +71,8 @@ class ViewController: UIViewController {
     }
     
     func transformerTest() {
-        let streamTransfomer = StreamTransformer<String, Any>.fromHandlers(
-            handlers: { (data: String, sink: EventSink<Any>) in
+        let streamTransfomer = StreamTransformer<String, Bool>.fromHandlers(
+            handlers: { (data: String, sink: EventSink<Bool>) in
                 
                 if (data.count > 5) {
                     sink.add(true)

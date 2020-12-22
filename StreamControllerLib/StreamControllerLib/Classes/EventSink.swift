@@ -26,9 +26,11 @@ final public class EventSink<D> {
             listener?(event)
         }
         
+        stream.eventReceivedTransformHelper?(event)
+        /*
         if let streamTransfomer =  stream.streamTransformer {
             streamTransfomer.handlers(event, streamTransfomer.streamController.sink)
-        }
+        }*/
      
     }
     
