@@ -11,29 +11,31 @@ import StreamControllerLib
 
 class ViewController: UIViewController {
 
-    var streamController = StreamController<Int>(streamListenType: .multipleListener)
-    
+    var streamControllerNumber = StreamController<Int>(streamListenType: .multipleListener)
+    var streamControllerPassword = StreamController<String>(streamListenType: .multipleListener)
+
     var persistentStreamController = PersistentStreamController<String>()
    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("init test")
         
-        streamController.stream.listen { value in
+        /*
+        streamControllerNumber.stream.listen { value in
             print("received 1: \(value)")
         }
         
-        streamController.stream.listen { value in
+        streamControllerNumber.stream.listen { value in
             print("received 2: \(value)")
         }.catchError { value in
             print("throw error: \(value)")
         }
     
-        streamController.sink.add(2)
-        streamController.sink.addError("send error")
+        streamControllerNumber.sink.add(2)
+        streamControllerNumber.sink.addError("send error")
         
-        streamController.sink.close()
-        streamController.stream.listen { value in
+        streamControllerNumber.sink.close()
+        streamControllerNumber.stream.listen { value in
             print("this should fail: \(value)")
         }
                 
@@ -48,6 +50,31 @@ class ViewController: UIViewController {
         if let storedValue = persistentStreamController.value {
             print(storedValue)
         }
+        */
+        
+        let streamTransfomer = StreamTransformer<String, Any>.fromHandlers(
+            handlers: { (data: String, sink: EventSink<Any>) in
+                
+                if (data.count > 5) {
+                    sink.add(true)
+                } else {
+                    sink.addError("password too short")
+                }
+               
+            })
+        
+        let  validatePasswordStream = streamControllerPassword.stream.transform(streamTransformer: streamTransfomer).listen { value in
+            print("transform stream: \(value)")
+        }.catchError { value in
+            print("transform error: \(value)")
+        }
+        
+        streamControllerPassword.stream.listen { normalValue in
+            print("normal stream: \(normalValue)")
+        }
+        
+        streamControllerPassword.sink.add("d")
+        streamControllerPassword.sink.add("valid pasword")
         
     }
 

@@ -12,6 +12,7 @@ final public class EventSink<D> {
 
     private let stream: Stream<D>
     private var isClosed: Bool
+    private var streamTransformer: StreamTransformer<D,Any>?
     
     internal init(stream: Stream<D>) {
         self.stream = stream
@@ -24,6 +25,11 @@ final public class EventSink<D> {
         stream.listernerCallList.forEach { listener in
             listener?(event)
         }
+        
+        if let streamTransfomer =  stream.streamTransformer {
+            streamTransfomer.handlers(event, streamTransfomer.streamController.sink)
+        }
+     
     }
     
     public func addError(_ error: Any) {
@@ -32,11 +38,16 @@ final public class EventSink<D> {
         stream.catchErrorCallList.forEach { listener in
             listener?(error)
         }
+        
     }
     
     public func close() {
         stream.close()
         isClosed = true
+    }
+    
+    func addStreamTransformer(streamTransformer: StreamTransformer<D, Any>) {
+        self.streamTransformer = streamTransformer
     }
     
 }

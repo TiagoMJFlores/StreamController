@@ -8,20 +8,32 @@
 import Foundation
 
 
-final public class Stream<T> {
-    
+class First<T> {
+    typealias ClosureType = (_ value: T) -> Any
+    var savedClosure: ClosureType? = nil
+    func second<U>(closure: @escaping (_ value: T) -> U) {
+        savedClosure = closure
+    }
+}
+
+
+final public class Stream<T>  {
+   
+    var streamTransformer: StreamTransformer<T,Any>?
+  
     private let streamListenType: StreamListenType
     
     required init(streamListenState: StreamListenType = .singleListener) {
         self.streamListenType = streamListenState
     }
     
+ 
     typealias ListenCallbackType = ((T) -> Void)?
     typealias CatchErrorCallbackType = ((Any) -> Void)?
     
     var listernerCallList: [ListenCallbackType] = []
     var catchErrorCallList: [CatchErrorCallbackType] = []
-    
+   
     @discardableResult
     public func listen(received callback: @escaping (T) -> Void) -> Self {
         
@@ -33,7 +45,7 @@ final public class Stream<T> {
             listernerCallList.append(callback)
             break
         }
-    
+        
         return self
     }
     
@@ -55,4 +67,10 @@ final public class Stream<T> {
         listernerCallList = []
         catchErrorCallList = []
     }
+    
+    public func transform(streamTransformer:  StreamTransformer<T,Any>) -> Stream<Any>  {
+        self.streamTransformer = streamTransformer
+        return  streamTransformer.streamController.stream
+    }
+    
 }
