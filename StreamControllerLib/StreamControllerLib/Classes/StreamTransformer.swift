@@ -8,7 +8,7 @@
 import Foundation
 
 
-public struct StreamTransformer<T, S>  {
+final public struct StreamTransformer<T, S>  {
     
     var handlers: ( (_ data: T, _ sink: EventSink<S>) -> Void)
     

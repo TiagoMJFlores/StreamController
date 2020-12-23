@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class CombineLatestStream<T> {
+final public class CombineLatestStream<T> {
     
     private class CombineValues {
         var valueA: Any?

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum StreamListenType {
+final public enum StreamListenType {
     case singleListener
     case multipleListener
 }

@@ -9,7 +9,7 @@
 import UIKit
 import StreamControllerLib
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
 
     var streamControllerNumber = StreamController<Int>(streamListenType: .multipleListener)
     var streamControllerNumberTwo = StreamController<Int>(streamListenType: .multipleListener)

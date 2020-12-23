@@ -1,6 +1,6 @@
 import Foundation
 
-public class StreamController<T> {
+final public class StreamController<T> {
     
     public let stream: Stream<T>
     public let sink: EventSink<T>
