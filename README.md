@@ -8,7 +8,7 @@ StreamController...
  * facilitates the implementation of architectures such as MVVM
  * simplifies sending error messages in a structured way
  * it is lighweight compared to alternatives that offer streams like RxSwift or ReactiveCocoa
- * have advanced features that are used more often with streams like Persistent Streams, Stream Transformer and CombineLastest Operators  etc.
+ * have advanced features like Persistent Streams, Stream Transformer and CombineLastest Operators  etc.
 
 
 
