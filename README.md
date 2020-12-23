@@ -20,19 +20,26 @@ How do I use it?
    var streamController = StreamController<Int>()
     ```
 
-2. Listen to events:
+2. Listen to events and catch errors:
 
    ```swift  
    streamController.stream.listen { value in
             print("received 1: \(value)")
+    }.catchError { value in
+            print("throw error: \(value)")
     }   
     ```
 
-3. Post events:
+3. Post events and errors:
 
     ```swift  
     streamController.sink.add(1)
+    streamControllerNumber.sink.addError("send error")
     ```
+4. Closes the stream
+```swift  
+    streamController.steam.close()
+ ```
 
 Add StreamController to your project
 ----------------------------
