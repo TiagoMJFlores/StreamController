@@ -50,7 +50,14 @@ Advanced Features
 ----------------------------
 <details><summary><strong>PersistentStreamController ( Keep in memory the last value sent to the Stream ) </strong></summary>
 <p>
+
     
+<p> </br> </p>ℹ Description ℹ </p>
+PersistentStreamController allows you to access the last value issued in the Stream regardless of the time order in which they were issued. Imagine you have a form and when you press the save button you want access to the text fields that have already been issued.
+
+
+</br></p>🚀 Implementation 🚀 </p>
+
 1. Declare  PersistentStreamController
 ```swift
     var persistentStreamController = PersistentStreamController<String>()
@@ -73,19 +80,25 @@ Advanced Features
      }
 ```
 
-</details>
+</br> </details>
 
 <details><summary><strong>StreamTransformer ( Transform a stream into another stream ) </strong></summary>
-<p>
+    
+<p> </br> </p>ℹ Description ℹ </p>
+
+StreamTransform allows you to modify a Stream to obtain another Stream based on a formula defined by you that modifies or checks the events received from the first Stream and issues new events for a new Stream. Imagine that you have a form and you want to create streams that validate each text field (for each Stream associated with the text value of a textfield you can return a Stream of Booleans). Unlike a map function, it is more flexible and allows you to relate 1 event to several events.
+
+</br></p>🚀 Implementation 🚀 </p>
+
     
 1. Declare StreamController
 ```swift
-   var streamControllerPassword = StreamController<String>(streamListenType: .multipleListener)
+   var streamControllerTextfieldPassword = StreamController<String>(streamListenType: .multipleListener)
 ```
 
 2. Define the transformation
 ```swift
-    let streamTransfomer = StreamTransformer<String, Bool>.fromHandlers(
+    let streamTransfomerPassTextToBool = StreamTransformer<String, Bool>.fromHandlers(
             handlers: { (data: String, sink: EventSink<Bool>) in
                 
              if (data.count > 5) {
@@ -98,7 +111,7 @@ Advanced Features
 
 3. Add transform to the Stream using the transform method
 ```swift
-   streamControllerPassword.stream.transform(streamTransformer: streamTransfomer).listen { value in
+   streamControllerTextfieldPassword.stream.transform(streamTransformer: streamTransfomerPassTextToBool).listen { value in
       print("transform stream: \(value)")
    }.catchError { value in
       print("transform error: \(value)")
@@ -111,11 +124,17 @@ Advanced Features
     streamControllerPassword.sink.add("valid pasword")
 ```
 
- </details>   
+</br> </details>   
 
 <details><summary><strong>CombineLatestStream ( Combines multiple streams into one ) </strong></summary>
-<p>
 
+<p> </br> </p>ℹ Description ℹ </p>
+
+The CombineLatestStream receives several streams as input and returns a single stream as output according to a formula defined by you based on the last events received from the other Streams. Imagine that you want to combine data from several different network requests or enable a button on a form based on several validation streams. </br>
+You have several methods to combine in CombineLatestStream:
+combine2, combine3 and combine4. The only difference between them is the number of streams used as input.
+
+</br></p>🚀 Implementation 🚀 </p>
 
 1. Declare StreamControllers that you want to combine
 ```swift
@@ -139,11 +158,14 @@ Advanced Features
 
 4 Send events to StreamControllers as you normally would
 ```swift
-    let combineLatest = CombineLatestStream<Int>()
+     streamControllerNumberOne.sink.add(1)
+     streamControllerNumberTwo.sink.add(2)
+     streamControllerNumberOne.sink.add(1)
+     streamControllerNumberTwo.sink.add(2)
 ```
 
 </p>
-</details>
+</br> </details>
 
 Requirements
 ------------
