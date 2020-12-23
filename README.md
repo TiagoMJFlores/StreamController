@@ -53,7 +53,7 @@ Advanced Features
 
     
 <p> </br> </p>ℹ Description ℹ </p>
-PersistentStreamController allows you to access the last value issued in the Stream regardless of the time order in which they were issued. Imagine you have a form and when you press the save button you want access to the text fields that have already been issued.
+PersistentStreamController allows you to access the last value issued in the Stream regardless of the time order in which they were issued. Imagine you have a form and when you press the save button you want access to the text fields change text events that have already been issued.
 
 
 </br></p>🚀 Implementation 🚀 </p>
