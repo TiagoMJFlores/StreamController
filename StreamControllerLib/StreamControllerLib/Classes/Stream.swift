@@ -20,7 +20,6 @@ final public class Stream<T>  {
     typealias ListenCallbackType = ((T) -> Void)?
     typealias CatchErrorCallbackType = ((Any) -> Void)?
     
-
     var eventReceivedTransformHelper: ((T) -> Void)?
     
     var listernerCallList: [ListenCallbackType] = []
@@ -55,7 +54,7 @@ final public class Stream<T>  {
         return self
     }
     
-    func close() {
+    public func close() {
         listernerCallList = []
         catchErrorCallList = []
     }

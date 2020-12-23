@@ -94,6 +94,8 @@ class ViewController: UIViewController {
         
         streamControllerPassword.sink.add("d")
         streamControllerPassword.sink.add("valid pasword")
+        
+        streamControllerPassword.stream.close()
     }
 
     override func didReceiveMemoryWarning() {
